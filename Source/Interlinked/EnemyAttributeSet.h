@@ -22,20 +22,20 @@ class INTERLINKED_API UEnemyAttributeSet : public UAttributeSet
 	GENERATED_BODY()
 	
 	UPROPERTY(BlueprintReadWrite, Meta = (AllowPrivateAccess = true))
-	FGameplayAttributeData TestVar = 100.0f;
-	ATTRIBUTE_ACCESSORS(UEnemyAttributeSet, TestVar)
+	FGameplayAttributeData TestHealth = 100.0f;
+	ATTRIBUTE_ACCESSORS(UEnemyAttributeSet, TestHealth)
 
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override
 	{
 		Super::PreAttributeChange(Attribute, NewValue);
-		if (Attribute == GetTestVarAttribute())
+		if (Attribute == GetTestHealthAttribute())
 		{
 			UAbilitySystemComponent* AbilityComp = GetOwningAbilitySystemComponent();
-			const float CurrentVarValue = TestVar.GetBaseValue();
+			const float CurrentHealthValue = TestHealth.GetBaseValue();
 
 			NewValue = FMath::Clamp<float>(NewValue, 0, 100);
 
-			if (!FMath::IsNearlyEqual(CurrentVarValue, NewValue))
+			if (!FMath::IsNearlyEqual(CurrentHealthValue, NewValue))
 			{
 				AbilityComp->ApplyModToAttributeUnsafe(Attribute, EGameplayModOp::Override, NewValue);
 			}
