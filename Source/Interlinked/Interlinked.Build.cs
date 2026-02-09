@@ -20,7 +20,7 @@ public class Interlinked : ModuleRules
 			"UMG"
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] {"GameplayAbilities" });
+		PrivateDependencyModuleNames.AddRange(new string[] { });
 
 		PublicIncludePaths.AddRange(new string[] {
 			"Interlinked",
