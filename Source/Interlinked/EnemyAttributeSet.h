@@ -33,7 +33,7 @@ class INTERLINKED_API UEnemyAttributeSet : public UAttributeSet
 			UAbilitySystemComponent* AbilityComp = GetOwningAbilitySystemComponent();
 			const float CurrentHealthValue = TestHealth.GetBaseValue();
 
-			NewValue = FMath::Clamp<float>(NewValue, 0, 100);
+			NewValue = FMath::Clamp<float>(NewValue, 0, 500);
 
 			if (!FMath::IsNearlyEqual(CurrentHealthValue, NewValue))
 			{
