@@ -5,7 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "Faction.h"
+#include <GenericTeamAgentInterface.h>
 #include "InterlinkedCharacter.generated.h"
+
 
 class UInputComponent;
 class USkeletalMeshComponent;
@@ -19,7 +22,9 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
  *  A basic first person character
  */
 UCLASS(abstract)
-class AInterlinkedCharacter : public ACharacter
+class AInterlinkedCharacter : 
+	public ACharacter,
+	public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
 
@@ -48,6 +53,11 @@ protected:
 	/** Mouse Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category ="Input")
 	class UInputAction* MouseLookAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Team)
+	TEnumAsByte<EFaction> Faction = EFaction::Neutral;
+
+	FGenericTeamId TeamId;
 	
 public:
 	AInterlinkedCharacter();
@@ -90,5 +100,6 @@ public:
 	/** Returns first person camera component **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
+	virtual FGenericTeamId GetGenericTeamId() const override;
 };
 
