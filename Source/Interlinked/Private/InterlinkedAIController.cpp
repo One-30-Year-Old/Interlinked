@@ -14,7 +14,7 @@ void AInterlinkedAIController::SetGenericTeamId(const FGenericTeamId& NewTeamID)
 
 ETeamAttitude::Type AInterlinkedAIController::GetTeamAttitudeTowards(const AActor& Other) const
 {
-	UE_LOG(LogTemp, Warning, TEXT("GetTeamAttitudeTowards called"));
+	// UE_LOG(LogTemp, Warning, TEXT("GetTeamAttitudeTowards called"));
 	const APawn* OtherPawn = Cast<APawn>(&Other);
 	if (OtherPawn == nullptr) 
 	{
@@ -40,21 +40,21 @@ ETeamAttitude::Type AInterlinkedAIController::GetTeamAttitudeTowards(const AActo
 
 	FGenericTeamId myTeamId = GetGenericTeamId();
 
-	UE_LOG(LogTemp, Warning, TEXT("other team: %d"), static_cast<uint8>(OtherTeamId));
-	UE_LOG(LogTemp, Warning, TEXT("my team: %d"), static_cast<uint8>(myTeamId));
+	//UE_LOG(LogTemp, Warning, TEXT("other team: %d"), static_cast<uint8>(OtherTeamId));
+	//UE_LOG(LogTemp, Warning, TEXT("my team: %d"), static_cast<uint8>(myTeamId));
 
 	if (OtherTeamId == EFaction::Neutral)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Treat as neutral"));
+		//UE_LOG(LogTemp, Warning, TEXT("Treat as neutral"));
 		return ETeamAttitude::Neutral;
 	}
 
 	if (OtherTeamId == myTeamId)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Treat as friendly"));
+		//UE_LOG(LogTemp, Warning, TEXT("Treat as friendly"));
 		return ETeamAttitude::Friendly;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Treat as hostile"));
+	//UE_LOG(LogTemp, Warning, TEXT("Treat as hostile"));
 	return ETeamAttitude::Hostile;
 }
