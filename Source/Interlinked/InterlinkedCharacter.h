@@ -6,7 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
 #include "Faction.h"
-#include <GenericTeamAgentInterface.h>
+#include "GenericTeamAgentInterface.h"
 #include "InterlinkedCharacter.generated.h"
 
 
@@ -55,7 +55,7 @@ protected:
 	class UInputAction* MouseLookAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Team)
-	TEnumAsByte<EFaction> Faction = EFaction::Neutral;
+	TEnumAsByte<EFaction> Faction = EFaction::Player;
 
 	FGenericTeamId TeamId;
 	
