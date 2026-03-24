@@ -46,6 +46,8 @@ AInterlinkedCharacter::AInterlinkedCharacter()
 	// Configure character movement
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 	GetCharacterMovement()->AirControl = 0.5f;
+
+	TeamId = FGenericTeamId(Faction);
 }
 
 void AInterlinkedCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -68,6 +70,11 @@ void AInterlinkedCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 	{
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input Component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
+}
+
+FGenericTeamId AInterlinkedCharacter::GetGenericTeamId() const
+{
+	return TeamId;
 }
 
 
