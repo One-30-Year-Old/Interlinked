@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{7BA42228-45B3-7152-9880-3B976EDED928}",
+	"EngineAssociation": "{0EA5B67E-43ED-AB47-F407-9FBAA21BF2BA}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -44,6 +44,10 @@
 				"Linux",
 				"Mac"
 			]
+		},
+		{
+			"Name": "CommonUI",
+			"Enabled": true
 		}
 	]
 }
