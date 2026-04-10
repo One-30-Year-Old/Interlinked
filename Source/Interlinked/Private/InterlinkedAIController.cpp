@@ -43,18 +43,18 @@ ETeamAttitude::Type AInterlinkedAIController::GetTeamAttitudeTowards(const AActo
 	//UE_LOG(LogTemp, Warning, TEXT("other team: %d"), static_cast<uint8>(OtherTeamId));
 	//UE_LOG(LogTemp, Warning, TEXT("my team: %d"), static_cast<uint8>(myTeamId));
 
-	if (OtherTeamId == EFaction::Neutral)
-	{
-		//UE_LOG(LogTemp, Warning, TEXT("Treat as neutral"));
-		return ETeamAttitude::Neutral;
-	}
-
 	if (OtherTeamId == myTeamId)
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("Treat as friendly"));
 		return ETeamAttitude::Friendly;
 	}
 
-	//UE_LOG(LogTemp, Warning, TEXT("Treat as hostile"));
-	return ETeamAttitude::Hostile;
+	if (OtherTeamId == EFaction::Player)
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("Treat as hostile"));
+		return ETeamAttitude::Hostile;
+	}
+
+	//UE_LOG(LogTemp, Warning, TEXT("Treat as neutral"));
+	return ETeamAttitude::Neutral;
 }
